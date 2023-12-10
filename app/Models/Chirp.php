@@ -17,4 +17,15 @@ class Chirp extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function chirpable()
+    {
+        return $this->morphTo();
+    }
+    
+public function image()
+{
+    return $this->belongsTo(Image::class);
+}
+
+
 }

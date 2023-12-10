@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-       .gallery {
+        .gallery {
   --s: 130px; /* control the size of the images*/
   
   display: grid;
@@ -68,26 +68,27 @@ body {
 </head>
 <body>
     <div class="gallery">
-  <input type="checkbox" >
-  <img src="https://picsum.photos/id/1028/300/300" alt="a forest after an apocalypse" onclick="openChirpWindow(1)">
-  <img src="https://picsum.photos/id/15/300/300" alt="a waterfall and many rocks" onclick="openChirpWindow(2)">
-  <img src="https://picsum.photos/id/1040/300/300" alt="a house on a mountain" onclick="openChirpWindow(3)">
-  <img src="https://picsum.photos/id/106/300/300" alt="sime pink flowers" onclick="openChirpWindow(4)">
-  <img src="https://picsum.photos/id/136/300/300" alt="big rocks with some trees" onclick="openChirpWindow(5)">
-  <img src="https://picsum.photos/id/1039/300/300" alt="a waterfall, a lot of tree and a great view from the sky" onclick="openChirpWindow(6)">
-  <img src="https://picsum.photos/id/110/300/300" alt="a cool landscape" onclick="openChirpWindow(7)">
-  <img src="https://picsum.photos/id/1047/300/300" alt="inside a town between two big buildings" onclick="openChirpWindow(8)">
-  <img src="https://picsum.photos/id/1057/300/300" alt="a great view of the sea above the mountain" onclick="openChirpWindow(9)">
-</div>
-<script>
-    function openChirpWindow(imageNumber) {
-        
-        let chirpRoute = "{{ route('chirp.show', ['chirp' => ':imageNumber']) }}";
-        chirpRoute = chirpRoute.replace(':imageNumber', imageNumber);
+        <input type="checkbox">
+        <img src="https://picsum.photos/id/1028/300/300" alt="a forest after an apocalypse" onclick="openChirpWindow(1)">
+<img src="https://picsum.photos/id/15/300/300" alt="a waterfall and many rocks" onclick="openChirpWindow(2)">
+<img src="https://picsum.photos/id/1040/300/300" alt="a house on a mountain" onclick="openChirpWindow(3)">
+<img src="https://picsum.photos/id/106/300/300" alt="some pink flowers" onclick="openChirpWindow(4)">
+<img src="https://picsum.photos/id/136/300/300" alt="big rocks with some trees" onclick="openChirpWindow(5)">
+<img src="https://picsum.photos/id/1039/300/300" alt="a waterfall, a lot of tree and a great view from the sky" onclick="openChirpWindow(6)">
+<img src="https://picsum.photos/id/110/300/300" alt="a cool landscape" onclick="openChirpWindow(7)">
+<img src="https://picsum.photos/id/1047/300/300" alt="inside a town between two big buildings" onclick="openChirpWindow(8)">
+<img src="https://picsum.photos/id/1057/300/300" alt="a great view of the sea above the mountain" onclick="openChirpWindow(9)">
 
-        
-        window.open(chirpRoute, '_blank');
-    }
-</script>
+    </div>
+
+    <script>
+        function openChirpWindow(imageNumber) {
+    let chirpRoute = "{{ route('chirp.show', ['id' => ':imageNumber']) }}";
+    chirpRoute = chirpRoute.replace(':imageNumber', imageNumber);
+
+    window.open(chirpRoute, '_blank');
+}
+
+    </script>
 </body>
 </html>

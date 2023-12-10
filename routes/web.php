@@ -3,7 +3,7 @@
 use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Image;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,7 +34,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 Route::post('/login', [LoginController::class, 'login'])->name('login');
+// Route::get('/gallery', function () {
+//     return view('gallery');
+// })->name('gallery');
+Route::get('/chirp/show/{id}', [ChirpController::class, 'show'])->name('chirp.show');
+
+
 Route::get('/gallery', function () {
-    return view('gallery');
-})->name('gallery');
+    $images = Image::with('chirps')->get();
+    return view('gallery', compact('images'));
+})->name('gallery.show');
 require __DIR__.'/auth.php';
