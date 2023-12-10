@@ -26,19 +26,62 @@
             .nav1{
                 margin-left: 90%;
             }
-            .body{
-                overflow : hidden;
-                
-            }
-           
+  
+body {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background-image:url('../images/main_background.jpg');
+  background-size:cover;
+  overflow:hidden;
+}
 
-            html {
-                    scroll-behavior: smooth;
-            }
-        </style>
+p {
+  height: 200px;
+  width: 500px;
+  margin: 100px auto;
+  position: relative;
+}
+
+img {
+  height: 100px;
+  position: absolute;
+  left: 0;
+  offset-path: path('m 0 50 q 50-30 100-30 t 100 30 100 0 100-30 100 30');
+  box-shadow: 1px 1px 3px #0008;
+  transition: transform .4s ease-out, offset-path .4s cubic-bezier(.77,-1.17,.75,.84),box-shadow .3s, z-index .3s;
+  z-index: 0;
+}
+
+img:hover {
+  transform: scale(3);
+  /* on hover, the path gets a bit shorter & flattened & shifted to left/bottom a bit for nicer movement */
+  offset-path: path('m 5 65 q 45-0 90-0 t 90 0 90 0 90-0 90 0');
+  box-shadow: 3px 4px 10px #0006;
+  z-index: 999;
+}
+
+img:nth-last-child(5):first-child {
+  offset-distance: 0%;
+}
+img:nth-last-child(4):nth-child(2) {
+  offset-distance: 25%;
+}
+img:nth-last-child(3):nth-child(3) {
+  offset-distance: 51%;
+}
+img:nth-last-child(2):nth-child(4) {
+  offset-distance: 75%;
+}
+img:last-child:nth-child(5) {
+  offset-distance: 100%;
+}
+
+            
+</style>
     </head>
     <body class="body">
-        <img src="../images/main_background.jpg" style = "filter: blur(2px);"  />
+        
         <div >
             @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10 relative sm:flex sm:justify-left sm:items-left min-v-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white nav">
@@ -53,8 +96,19 @@
                         @endif
                     @endauth
                 </div>
-                </div>
             @endif
         </div>
+
+        <div>
+             <p>
+                <img src="../images/mainBuilding.jpg">
+                <img src="../images/playground1.jpg">
+                <img src="../images/playground2.jpg">
+                <img src="../images/cseDepartment.jpg">
+                <img src="../images/gym.jpg">
+                
+            </p>
+        </div>
+
     </body>
 </html>
