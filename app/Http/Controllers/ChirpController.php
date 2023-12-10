@@ -48,10 +48,16 @@ class ChirpController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Chirp $chirp)
-    {
-        //
-    }
+ 
+
+public function show($id)
+{
+    
+    $chirp = Chirp::find($id);
+
+    
+    return view("chirps.chirp{$id}", ['chirp' => $chirp]);
+}
 
     /**
      * Show the form for editing the specified resource.

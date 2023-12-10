@@ -22,7 +22,7 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
+Route::get('/chirps/{chirp}', [ChirpController::class, 'show'])->name('chirp.show');
 Route::resource('chirps', ChirpController::class)
     ->only(['index', 'store'])
     ->only(['index', 'store', 'edit', 'update', 'destroy'])
@@ -33,5 +33,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/gallery', function () {
+    return view('gallery');
+})->name('gallery');
 require __DIR__.'/auth.php';
